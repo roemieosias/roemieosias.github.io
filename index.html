@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roemie Osias — Designer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F5F3EF;
+      --ink: #1C1C1C;
+      --accent: #B34A2E;
+      --muted: #9C9488;
+      --rule: #E2DDD6;
+      --white: #FDFCFA;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-serif-alt: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+
+      --nav-h: 56px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+
+    nav.scrolled {
+      background: rgba(245, 243, 239, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 40px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: calc(90vh - var(--nav-h));
+    }
+
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 108px);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 14ch;
+      margin-bottom: 40px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 48ch;
+      line-height: 1.7;
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 64px;
+      border-top: 1px solid var(--rule);
+      margin-top: 80px;
+    }
+
+    .hero-role {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-scroll {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 32px;
+      background: var(--rule);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /* ─── WORK SECTION ────────────────────────────────────── */
+    .work {
+      padding: 80px 40px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+    }
+
+    /* Slovenian Hall: left column, taller */
+    .project-card {
+      background: var(--white);
+      padding: 48px 44px 44px;
+      position: relative;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border-left: 4px solid transparent;
+      transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-accent, var(--ink));
+      opacity: 0;
+      transition: opacity 300ms ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .project-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card:hover {
+      border-left-color: var(--card-accent, var(--ink));
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(28,28,28,0.08);
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(6px);
+    }
+
+    .project-card.large {
+      grid-column: span 2;
+    }
+
+    .project-num {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .project-tags {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--card-accent, var(--muted));
+      margin-bottom: 20px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 52ch;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+    }
+
+    .project-type-badge {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-arrow {
+      font-size: 18px;
+      color: var(--card-accent, var(--ink));
+      transition: transform 200ms ease;
+      line-height: 1;
+    }
+
+    /* ─── CARD ACCENT COLORS ──────────────────────────────── */
+    #slovenian-hall  { --card-accent: #00468B; }
+    #inherited-distance { --card-accent: #B34A2E; }
+    #good-molecules  { --card-accent: #28A745; }
+    #doordash        { --card-accent: #E02020; }
+
+    /* DoorDash is large / full-width */
+    #doordash {
+      grid-column: span 2;
+    }
+
+    #doordash .project-desc {
+      max-width: 72ch;
+    }
+
+    /* ─── ABOUT SECTION ───────────────────────────────────── */
+    .about {
+      border-top: 1px solid var(--rule);
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 48px;
+    }
+
+    .about-bio {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .about-bio p + p {
+      margin-top: 1.2em;
+    }
+
+    .about-meta {
+      padding-top: 8px;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .meta-row:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 80px 40px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-cta {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 56px;
+      color: var(--bg);
+    }
+
+    .footer-cta em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.55;
+      transition: opacity 200ms ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-link::after {
+      content: '↗';
+      font-size: 12px;
+    }
+
+    .footer-link:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(245,243,239,0.1);
+      padding-top: 24px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(245,243,239,0.35);
+    }
+
+    .footer-made {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(245,243,239,0.35);
+    }
+
+    /* ─── PAGE ENTRY ANIMATION ────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 700ms ease forwards;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0ms; }
+    .fade-in:nth-child(2) { animation-delay: 120ms; }
+    .fade-in:nth-child(3) { animation-delay: 240ms; }
+    .fade-in:nth-child(4) { animation-delay: 360ms; }
+    .fade-in:nth-child(5) { animation-delay: 480ms; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+
+      .hero { padding: 72px 24px 60px; min-height: auto; }
+      .hero-footer { flex-direction: column; align-items: flex-start; gap: 24px; margin-top: 48px; padding-top: 40px; }
+      .hero-scroll { display: none; }
+
+      .work { padding: 60px 24px 80px; }
+      .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+      .project-card.large, #doordash { grid-column: span 1; }
+      .project-card { padding: 36px 28px 32px; }
+
+      .about { padding: 72px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+
+      footer { padding: 64px 24px 40px; }
+      .footer-links { gap: 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      .hero { padding: 56px 20px 48px; }
+      .work { padding: 48px 20px 60px; }
+      .about { padding: 56px 20px; }
+      footer { padding: 56px 20px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">Roemie Osias</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-body">
+        <p class="hero-eyebrow fade-in">Portfolio — 2024–2025</p>
+        <h1 class="hero-headline fade-in">Design that carries <em>weight.</em></h1>
+        <p class="hero-sub fade-in">Brand identity, UX, graphic design, and motion — built around culture, community, and story.</p>
+      </div>
+      <div class="hero-footer fade-in">
+        <span class="hero-role">Student Designer — San Francisco</span>
+        <span class="hero-scroll">Scroll</span>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work" aria-label="Selected Work">
+      <p class="section-label">Selected Work — 2024–2025</p>
+
+      <div class="projects-grid">
+
+        <!-- 01 Slovenian Hall -->
+        <a class="project-card" id="slovenian-hall" href="https://drive.google.com/file/d/1-0T3LQ7weX_EF438eMM8_dkwgJXfmR6d/view" target="_blank" rel="noopener" aria-label="Slovenian Hall project">
+          <span class="project-num">01</span>
+          <h2 class="project-title">Slovenian Hall</h2>
+          <p class="project-tags">UX Design · Brand Identity · Web Design</p>
+          <p class="project-desc">End-to-end brand identity and website design for a 97-year-old Slovenian cultural nonprofit in San Francisco's Potrero Hill — from color system and typography through wireframes to high-fidelity prototype.</p>
+          <div class="project-footer">
+            <span class="project-type-badge">Brand + UX</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 02 Inherited Distance -->
+        <a class="project-card" id="inherited-distance" href="https://drive.google.com/file/d/1dHYvCL6MWLQqMwX7b5IRaMY0gPANErPT/view" target="_blank" rel="noopener" aria-label="Inherited Distance project">
+          <span class="project-num">02</span>
+          <h2 class="project-title">Inherited Distance</h2>
+          <p class="project-tags">Information Design · Digital Archive · Personal Work</p>
+          <p class="project-desc">A reflective digital archive mapping the Filipino diaspora through 24 objects across two countries and two time periods — told through my own family's migration story.</p>
+          <div class="project-footer">
+            <span class="project-type-badge">Archive + Identity</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 03 Good Molecules -->
+        <a class="project-card" id="good-molecules" href="#good-molecules" aria-label="Good Molecules project">
+          <span class="project-num">03</span>
+          <h2 class="project-title">Good Molecules</h2>
+          <p class="project-tags">Motion Design · Video Production · Brand</p>
+          <p class="project-desc">A video production project for Good Molecules, an ingredient-first skincare brand — translating product identity into moving image.</p>
+          <div class="project-footer">
+            <span class="project-type-badge">Motion + Brand</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 04 DoorDash (full-width) -->
+        <a class="project-card" id="doordash" href="#doordash" aria-label="DoorDash Campus Launcher project">
+          <span class="project-num">04</span>
+          <h2 class="project-title">DoorDash Campus Launcher</h2>
+          <p class="project-tags">Graphic Design · Marketing · Print</p>
+          <p class="project-desc">A multi-panel recruitment poster series for DoorDash's Campus Launcher program — designed in a collage aesthetic for a Gen Z college audience.</p>
+          <div class="project-footer">
+            <span class="project-type-badge">Graphic + Print</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-label="About">
+      <p class="section-label">About</p>
+      <div class="about-inner">
+        <div class="about-bio">
+          <p>I'm Roemie Osias, a design student at San Francisco State University. My work lives at the intersection of culture, community, and communication — whether that's building a brand identity for a century-old cultural hall, or documenting my family's migration story as a filterable archive.</p>
+          <p>I'm drawn to projects that carry meaning beyond aesthetics: design that preserves something, connects someone, or changes how a story is told.</p>
+        </div>
+        <div class="about-meta">
+          <div class="meta-row">
+            <span class="meta-label">Currently</span>
+            <span class="meta-value">Student, San Francisco State University</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Disciplines</span>
+            <span class="meta-value">UX Design · Brand Identity · Graphic Design · Information Design · Motion</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Based in</span>
+            <span class="meta-value">San Francisco Bay Area</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <p class="footer-cta">Let's work <em>together.</em></p>
+      <div class="footer-links">
+        <a class="footer-link" href="mailto:roemieosias@sfsu.edu">roemieosias@sfsu.edu</a>
+        <a class="footer-link" href="https://roemieosias.github.io" target="_blank" rel="noopener">roemieosias.github.io</a>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Roemie Osias</span>
+        <span class="footer-made">San Francisco, CA</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
